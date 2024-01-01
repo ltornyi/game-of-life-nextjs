@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
+import { Flex } from 'antd';
 
 import styles from './page.module.css'
 import { LifeGrid } from './_components/LifeGrid';
@@ -55,7 +56,7 @@ export default function Home() {
   }
 
   return (
-    <main className={styles.main}>
+    <Flex vertical justify='space-between' align='center' component={'main'} className={styles.container}>
       <LifeGrid grid={grid} running={running} cellChangeHandler={cellChangeHandler}></LifeGrid>
       <ControlPanel
         updateFrequencyMin={1}
@@ -65,8 +66,8 @@ export default function Home() {
         initWellKnownPattern={initWellKnownPattern}
         clearHandler={clearHandler}
         running={running}
-        toggleRunning={toggleRunning}
-      ></ControlPanel>
-    </main>
+        toggleRunning={toggleRunning}>
+      </ControlPanel>
+    </Flex>
   )
 }

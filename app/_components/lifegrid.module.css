@@ -1,13 +1,5 @@
 .grid {
   border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.row {
-  display: flex;
-  gap: 1px;
 }
 
 .cell {

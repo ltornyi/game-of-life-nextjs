@@ -1,3 +1,5 @@
+import { Flex } from 'antd';
+
 import styles from './lifegrid.module.css'
 import { Cell } from "./Cell";
 
@@ -9,9 +11,9 @@ interface LifeGridProps {
 export const LifeGrid = ({grid, running, cellChangeHandler}: LifeGridProps) => {
 
   return (
-    <div className={styles.grid}>
+    <Flex vertical gap="1px" className={styles.grid}>
       {grid.map((row, rowIndex) => (
-        <div key={rowIndex} className={styles.row}>
+        <Flex key={rowIndex} gap="1px">
           {row.map((cell, colIndex) => (
             <Cell
               key={`cell-${rowIndex}-${colIndex}`}
@@ -22,8 +24,8 @@ export const LifeGrid = ({grid, running, cellChangeHandler}: LifeGridProps) => {
               onCellChange={cellChangeHandler}
             />
           ))}
-        </div>
+        </Flex>
       ))}
-    </div>
+    </Flex>
   );
 }

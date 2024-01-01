@@ -1,3 +1,5 @@
+import { Flex } from "antd"
+
 import { WellKnownPattern } from "../_utils/pattern-constructors"
 
 interface ControlPanelProps {
@@ -24,7 +26,7 @@ export const ControlPanel = (props: ControlPanelProps) => {
   }
 
   return (
-    <div>
+    <Flex gap="small">
       <button onClick={props.toggleRunning} >{props.running ? 'Pause': 'Start'}</button>
       <span>{props.updateFrequency}</span>
       <button onClick={faster} >Faster</button>
@@ -33,6 +35,6 @@ export const ControlPanel = (props: ControlPanelProps) => {
       <button onClick={() => props.initWellKnownPattern(WellKnownPattern.Glider)} >Glider</button>
       <button onClick={() => props.initWellKnownPattern(WellKnownPattern.Caterer)} >Caterer</button>
       <button onClick={props.clearHandler} >Clear</button>
-    </div>
+    </Flex>
   )
 }
