@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
-import { Flex } from 'antd';
+import { Flex, ConfigProvider } from 'antd';
 
 import styles from './page.module.css'
 import { LifeGrid } from './_components/LifeGrid';
@@ -56,6 +56,7 @@ export default function Home() {
   }
 
   return (
+    <ConfigProvider theme={{ cssVar: true }}>
     <Flex vertical justify='space-between' align='center' component={'main'} className={styles.container}>
       <LifeGrid grid={grid} running={running} cellChangeHandler={cellChangeHandler}></LifeGrid>
       <ControlPanel
@@ -69,5 +70,6 @@ export default function Home() {
         toggleRunning={toggleRunning}>
       </ControlPanel>
     </Flex>
+    </ConfigProvider>
   )
 }
