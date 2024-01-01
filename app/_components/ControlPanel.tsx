@@ -1,6 +1,7 @@
-import { Flex } from "antd"
+import { Button, Flex, Slider, Switch, Typography } from "antd"
 
 import { WellKnownPattern } from "../_utils/pattern-constructors"
+import styles from './controlpanel.module.css'
 
 interface ControlPanelProps {
   updateFrequencyMin: number,
@@ -13,28 +14,26 @@ interface ControlPanelProps {
   toggleRunning: () => void
 }
 export const ControlPanel = (props: ControlPanelProps) => {
-  const faster = () => {
-    if (props.updateFrequency > props.updateFrequencyMin) {
-      props.updateFrequencyChange(props.updateFrequency-1)
-    }
-  }
-
-  const slower = () => {
-    if (props.updateFrequency < props.updateFrequencyMax) {
-      props.updateFrequencyChange(props.updateFrequency+1)
-    }
-  }
-
   return (
-    <Flex gap="small">
-      <button onClick={props.toggleRunning} >{props.running ? 'Pause': 'Start'}</button>
-      <span>{props.updateFrequency}</span>
-      <button onClick={faster} >Faster</button>
-      <button onClick={slower} >Slower</button>
-      <button onClick={() => props.initWellKnownPattern(WellKnownPattern.Pentomino)} >Pentomino</button>
-      <button onClick={() => props.initWellKnownPattern(WellKnownPattern.Glider)} >Glider</button>
-      <button onClick={() => props.initWellKnownPattern(WellKnownPattern.Caterer)} >Caterer</button>
-      <button onClick={props.clearHandler} >Clear</button>
+    <Flex vertical>
+      <Flex gap="small">
+        <Switch checked={props.running} onChange={props.toggleRunning}/>
+        <Button onClick={() => props.initWellKnownPattern(WellKnownPattern.Pentomino)} >Pentomino</Button>
+        <Button onClick={() => props.initWellKnownPattern(WellKnownPattern.Glider)} >Glider</Button>
+        <Button onClick={() => props.initWellKnownPattern(WellKnownPattern.Caterer)} >Caterer</Button>
+        <Button danger onClick={props.clearHandler} >Clear</Button>
+      </Flex>
+      <Flex>
+        <Typography.Text>Fast</Typography.Text>
+        <Slider
+          min={props.updateFrequencyMin}
+          max={props.updateFrequencyMax}
+          value={props.updateFrequency}
+          onChange={(value) => props.updateFrequencyChange(value)}
+          className={styles.slider}
+        />
+        <Typography.Text>Slow</Typography.Text>
+      </Flex>
     </Flex>
   )
 }

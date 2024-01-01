@@ -9,7 +9,7 @@ import { WellKnownPattern, wellKnownHandlers } from './_utils/pattern-constructo
 import { ControlPanel } from './_components/ControlPanel';
 
 export default function Home() {
-  const sizeX = 30;
+  const sizeX = 60;
   const sizeY = 30;
 
   const [grid, setGrid] = useState(createEmptyGrid(sizeX,sizeY));
