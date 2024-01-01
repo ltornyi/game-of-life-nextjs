@@ -1,3 +1,4 @@
+import styles from './lifegrid.module.css'
 import { Cell } from "./Cell";
 
 interface LifeGridProps {
@@ -8,9 +9,9 @@ interface LifeGridProps {
 export const LifeGrid = ({grid, running, cellChangeHandler}: LifeGridProps) => {
 
   return (
-    <div>
+    <div className={styles.grid}>
       {grid.map((row, rowIndex) => (
-        <div key={rowIndex}>
+        <div key={rowIndex} className={styles.row}>
           {row.map((cell, colIndex) => (
             <Cell
               key={`cell-${rowIndex}-${colIndex}`}

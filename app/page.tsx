@@ -8,7 +8,10 @@ import { WellKnownPattern, wellKnownHandlers } from './_utils/pattern-constructo
 import { ControlPanel } from './_components/ControlPanel';
 
 export default function Home() {
-  const [grid, setGrid] = useState(createEmptyGrid(30,30));
+  const sizeX = 30;
+  const sizeY = 30;
+
+  const [grid, setGrid] = useState(createEmptyGrid(sizeX,sizeY));
   const [running, setRunning] = useState(false);
   const [updateFrequency, setUpdateFrequency] = useState(100);
 
@@ -47,6 +50,10 @@ export default function Home() {
     }
   }
 
+  const clearHandler = () => {
+    setGrid(createEmptyGrid(sizeX, sizeY))
+  }
+
   return (
     <main className={styles.main}>
       <LifeGrid grid={grid} running={running} cellChangeHandler={cellChangeHandler}></LifeGrid>
@@ -56,7 +63,7 @@ export default function Home() {
         updateFrequency={updateFrequency}
         updateFrequencyChange={setUpdateFrequency}
         initWellKnownPattern={initWellKnownPattern}
-        clearHandler={() => {}}
+        clearHandler={clearHandler}
         running={running}
         toggleRunning={toggleRunning}
       ></ControlPanel>

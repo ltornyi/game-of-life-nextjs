@@ -1,3 +1,5 @@
+import styles from './lifegrid.module.css'
+
 interface CellProp {
   x: number,
   y: number,
@@ -8,10 +10,10 @@ interface CellProp {
 
 export const Cell = ({value, disabled, onCellChange, x, y}: CellProp) => {
   return (
-    <input type="checkbox"
-      checked={value}
-      disabled={disabled}
-      onChange={(event) => onCellChange(x, y, event.target.checked)}
-    />
+    <div
+      className={`${styles.cell} ${value ? styles.occupied : styles.empty} ${disabled ? styles.disabled : ''}`}
+      onClick={() => onCellChange(x, y, !value)}
+    >
+    </div>
   )
 }

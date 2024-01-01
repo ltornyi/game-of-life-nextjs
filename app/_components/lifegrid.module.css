@@ -1,0 +1,30 @@
+.grid {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.row {
+  display: flex;
+  gap: 1px;
+}
+
+.cell {
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+}
+
+.occupied {
+  background-color: rgb(167, 64, 197)
+}
+
+.empty {
+  background-color: white;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
